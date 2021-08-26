@@ -1,0 +1,11 @@
+<svg id="live-chat-s" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #767676;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Live_Chat" data-name="Live Chat" class="cls-1" d="M908,2245h-1v3l-4.5-3H900a2,2,0,0,1-2-2v-1l2,0.01V2242a1,1,0,0,0,1,1h1.5l2.5,1.5V2243h2a1,1,0,0,0,1-1v-4a1,1,0,0,0-1-1h0v-2h1a2,2,0,0,1,2,2v6A2,2,0,0,1,908,2245Zm-4-4h-5.5l-4.5,3v-3h-2a2,2,0,0,1-2-2v-9a2,2,0,0,1,2-2h12a2,2,0,0,1,2,2v9A2,2,0,0,1,904,2241Zm0-10a1,1,0,0,0-1-1h-9c-0.553,0-2,.44-2,1v7c0,0.55,1.447,1,2,1h2v1.5l2.5-1.5H903a1,1,0,0,0,1-1v-7Zm-10,4h8v2h-8v-2Zm0-3h8v2h-8v-2Z" transform="translate(-890 -2228)"/>
+</svg>

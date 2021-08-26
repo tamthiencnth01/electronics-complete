@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Chăm Sóc Khách hàng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="/layouts/css/bootstrap.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="/layouts/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="/layouts/css/font.css" type="text/css"/>
+    <link href="/layouts/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/layouts/css/morris.css">
+    <!-- //charts -->
+    <!--//skycons-icons-->
+    <link rel="stylesheet" type="text/css" href="/layouts/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="/layouts/css/basictable.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/css/sweetalert2.min.css">
+    <script type="text/javascript" src="/js/sweetalert2.min.js"></script>
+
+    <!--    JS-->
+    <script src="/layouts/js/jquery2.0.3.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //font-awesome icons -->
+
+    <script src="/layouts/js/modernizr.js"></script>
+    <script src="/layouts/js/jquery.cookie.js"></script>
+    <script src="/layouts/js/screenfull.js"></script>
+    <script>
+        $(function () {
+            $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+            if (!screenfull.enabled) {
+                return false;
+            }
+
+
+
+            $('#toggle').click(function () {
+                screenfull.toggle($('#container')[0]);
+            });
+        });
+    </script>
+    <!-- charts -->
+    <script src="/layouts/js/raphael-min.js"></script>
+    <script src="/layouts/js/morris.js"></script>
+    <!--skycons-icons-->
+    <script src="/layouts/js/skycons.js"></script>
+    <script type="text/javascript" src="/layouts/js/jquery.basictable.min.js"></script>
+    <script>
+        var theme = $.cookie('protonTheme') || 'default';
+        $('body').removeClass (function (index, css) {
+            return (css.match (/\btheme-\S+/g) || []).join(' ');
+        });
+        if (theme !== 'default') $('body').addClass(theme);
+    </script>
+    <script type="text/javascript" src="/js/custom-validation.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script src="/layouts/js/bootstrap.js"></script>
+    <script src="/layouts/js/proton.js"></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="/js/page.js"></script>
+
+    <!--    <script src="/js/product.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>-->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+</head>
+<body class="dashboard-page">
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="/cskh">
+                <i class="fa fa-home nav_icon"></i>
+                <span class="nav-text">
+					CHĂM SÓC KHÁCH HÀNG
+					</span>
+            </a>
+        </li>
+        <li>
+            <a href="/disagree">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                <span class="nav-text">
+					TỪ CHỐI BẢO HÀNH
+					</span>
+            </a>
+        </li>
+
+    </ul>
+    <ul class="logout">
+        <li>
+            <a th:href="@{/logout}">
+                <i class="icon-off nav-icon"></i>
+                <span class="nav-text">
+			Logout
+			</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<section class="wrapper scrollable">
+    <nav class="user-menu">
+        <a href="javascript:;" class="main-menu-access">
+            <i class="icon-proton-logo"></i>
+            <i class="icon-reorder"></i>
+        </a>
+    </nav>
+    <section class="title-bar">
+        <div class="logo">
+            <h1><a href="/customers"><img src="/layouts/images/logo.png" alt="" />Colored</a></h1>
+        </div>
+        <div class="full-screen">
+            <section class="full-top">
+                <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+            </section>
+        </div>
+        <div class="w3l_search">
+            <!--                action="#" method="post"-->
+            <input type="text" name="search" id="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+            <button class="btn btn-default" onclick="bill.search()" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+        <div class="alert alert-info">
+            <strong>Hi <span th:text="${userInfoName}"></span></strong> Welcome back!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+        </div>
+        <div class="clearfix"> </div>
+    </section>
+    <div class="main-grid">
+        <div class="agile-grids">
+            <h3>DANH SÁCH LINH KIỆN, SẢN PHẨM ĐÃ ĐƯỢC XỬ LÝ DỊCH VỤ TRẢ PHÍ</h3>
+
+            <table id="table-force-off" class="table table-hover table-bordered text-nowrap table-replaced">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tên Linh Kiện</th>
+                    <th>Serial Number</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá Thay</th>
+                    <th>Ngày Thay</th>
+                    <th>Tên Khách Hàng</th>
+                    <th>Tạo Ca Bảo Hành</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <p>2021...</a></p>
+    </div>
+    <!-- //footer -->
+
+    <!-- The Modal Create Bill -->
+    <div class="modal" id="billModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Phiếu Thông Tin Bảo Hành </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="createBillForm">
+                        <div class="form-group" style="text-align: center">
+                            <p>Tên Khách Hàng: <span style="color: #0e8f9f" id="customerFullName"></span></p>
+                            <p>Tên Sản Phẩm: <span style="color: red" id="productName"></span></p>
+                            <p>Số SerialNumber: <span style="color: red" id="productSerial"></span></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ hiện tại:</label>
+                            <input type="text" name="billAddress" class="form-control">
+                            <input type="hidden" name="billId" value="0">
+                            <input type="hidden" id="customerId">
+                            <input type="hidden" id="productId">
+                        </div>
+                        <div class="form-group">
+                            <label>Số Điện Thoại</label>
+                            <input type="tel" name="billPhoneNumber" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tình Trạng Ban Đầu</label>
+                            <input type="text" name="firstStatus" class="form-control">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <a href='javascript:;' class="btn btn-primary" onclick="bill.save()">Save</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal View Tu CHoi Bao Hanh -->
+    <div class="modal" id="viewHistoryWarnatyModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Phiếu Thông Tin Bảo Hành </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="viewHistoryWarnatyForm">
+                        <div class="form-group" style="text-align: center">
+                            <p>Nguyên Nhân: <span style="color: #0e8f9f" id="reason"></span></p>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/bill.js"></script>
+
+</body>
+</html>

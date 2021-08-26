@@ -1,0 +1,11 @@
+<svg id="Support-Home-Email" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #767676;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="email_copy_2" data-name="email copy 2" class="cls-1" d="M317,3058H299a1,1,0,0,1-1-1v-12a1,1,0,0,1,1-1h18a1,1,0,0,1,1,1v12A1,1,0,0,1,317,3058Zm-2.218-2-4.252-4-2.034,1.87a1.011,1.011,0,0,1-.992,0l-2.055-1.9L301.21,3056h13.572ZM300,3054.4l3.981-3.79L300,3046.93v7.47Zm1.82-8.4,6.18,5.84,1.963-1.84c0.008-.01.01-0.02,0.019-0.03a0.028,0.028,0,0,0,.025-0.01l4.224-3.96H301.82ZM312,3050.65l4,3.76v-7.42Z" transform="translate(-298 -3041)"/>
+</svg>

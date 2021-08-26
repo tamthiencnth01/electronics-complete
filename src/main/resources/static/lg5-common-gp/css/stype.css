@@ -1,0 +1,16 @@
+header.navigation .gnb-login:hover, header.navigation .gnb-login:active {
+    display: block;
+    white-space: normal;
+    width: 222px;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    padding: 12px 20px;
+    position: absolute;
+    right: 0;
+    top: 51px;
+    text-align: left;
+}
+
+img.lazyload {
+    opacity: 1 !important;
+}

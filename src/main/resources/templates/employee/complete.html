@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Hoàn Thành</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="/layouts/css/bootstrap.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="/layouts/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="/layouts/css/font.css" type="text/css"/>
+    <link href="/layouts/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <script src="/layouts/js/jquery2.0.3.min.js"></script>
+    <script src="/layouts/js/modernizr.js"></script>
+    <script src="/layouts/js/jquery.cookie.js"></script>
+    <script src="/layouts/js/screenfull.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/page.js"></script>
+
+    <script>
+        $(function () {
+            $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+            if (!screenfull.enabled) {
+                return false;
+            }
+            $('#toggle').click(function () {
+                screenfull.toggle($('#container')[0]);
+            });
+        });
+    </script>
+    <!-- charts -->
+    <script src="/layouts/js/raphael-min.js"></script>
+    <script src="/layouts/js/morris.js"></script>
+    <link rel="stylesheet" href="/layouts/css/morris.css">
+    <!-- //charts -->
+    <!--skycons-icons-->
+    <script src="/layouts/js/skycons.js"></script>
+    <!--//skycons-icons-->
+    <!-- tables -->
+    <link rel="stylesheet" type="text/css" href="/layouts/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="/layouts/css/basictable.css" />
+    <script type="text/javascript" src="/layouts/js/jquery.basictable.min.js"></script>
+    <!--    Data table-->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+</head>
+<body class="dashboard-page">
+<script>
+    var theme = $.cookie('protonTheme') || 'default';
+    $('body').removeClass (function (index, css) {
+        return (css.match (/\btheme-\S+/g) || []).join(' ');
+    });
+    if (theme !== 'default') $('body').addClass(theme);
+</script>
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="/admin">
+                <i class="fa fa-home nav_icon"></i>
+                <span class="nav-text">
+                TÀI KHOẢN
+               </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="javascript:;">
+                <i class="fa fa-file-text-o nav_icon"></i>
+                <span class="nav-text">CA BẢO HÀNH</span>
+                <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+            </a>
+            <ul>
+                <li>
+                    <a class="subnav-text" href="/doing">
+                        ĐANG XỬ LÝ
+                    </a>
+                </li>
+                <li>
+                    <a class="subnav-text" href="/done">
+                        ĐÃ THỰC HIỆN
+                    </a>
+                </li>
+                <li>
+                    <a class="subnav-text" href="/complete">
+                        ĐÃ HOÀN THÀNH
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="/accessory">
+                <i class="fa fa-check-square-o nav_icon"></i>
+                <span class="nav-text">
+                LINH KIỆN
+               </span>
+            </a>
+        </li>
+    </ul>
+    <ul class="logout">
+        <li>
+            <a th:href="@{/logout}">
+                <i class="icon-off nav-icon"></i>
+                <span class="nav-text">
+         Logout
+         </span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<section class="wrapper scrollable">
+    <nav class="user-menu">
+        <a href="javascript:;" class="main-menu-access">
+            <i class="icon-proton-logo"></i>
+            <i class="icon-reorder"></i>
+        </a>
+    </nav>
+    <section class="title-bar">
+        <div class="logo">
+            <h1><a href="/customers"><img src="/layouts/images/logo.png" alt="" />Colored</a></h1>
+        </div>
+        <div class="full-screen">
+            <section class="full-top">
+                <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+            </section>
+        </div>
+        <div class="w3l_search">
+            <form action="#" method="post">
+                <input type="text" name="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+        <div class="alert alert-info">
+            <strong>Hi <span th:text="${userInfoName}"></span></strong> Welcome back!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+        </div>
+        <div class="clearfix"> </div>
+    </section>
+    <div class="main-grid">
+        <div class="agile-grids">
+            <!-- tables -->
+
+            <div class="table-heading">
+                <h2>DANH SÁCH CÁC CA BẢO HÀNH ĐÃ HOÀN THÀNH</h2>
+            </div>
+            <div class="agile-tables">
+                <div class="w3l-table-info">
+                    <div class="float-right mb-2">
+                        <a href="javascript:;" onclick="bill.statistical()" class="btn btn-primary">
+                            <i class="fa fa-chart-bar"></i>
+                            THỐNG KÊ
+                        </a>
+                    </div>
+                    <table id="table" class="table-complete">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tên Nhân Viên</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Địa Điểm</th>
+                            <th>Số Kilometer</th>
+                            <th>Chi Phí</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- //tables -->
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <p>2021...</a></p>
+    </div>
+    <!-- //footer -->
+</section>
+
+<!--Modal thống kê-->
+<div class="modal" id="statisticalModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">TỔNG CHI PHÍ TẠM TÍNH CỦA TỪNG NHÂN VIÊN</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table class="table-statics">
+                    <thead>
+                    <tr>
+                        <th>Tên Nhân Viên</th>
+                        <th>Tổng Cước Phí</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+<!--                <a href='javascript:;' class="btn btn-primary" onclick="user.save()">Save</a>-->
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/js/bill.js"></script>
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<!--<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+<script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+<script src="/layouts/js/bootstrap.js"></script>
+<script src="/layouts/js/proton.js"></script>
+</body>
+</html>
