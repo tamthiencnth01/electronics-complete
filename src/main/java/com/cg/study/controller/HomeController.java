@@ -115,7 +115,7 @@ public class HomeController {
     @GetMapping("/user")
     @PreAuthorize("hasAnyAuthority('USER')")
     public ModelAndView user(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("/customer/list");
+        ModelAndView modelAndView = new ModelAndView("customer/list");
         modelAndView.addObject("userInfo", getPrincipal());
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
@@ -124,7 +124,7 @@ public class HomeController {
     @GetMapping("/kt")
     @PreAuthorize("hasAnyAuthority('KT')")
     public ModelAndView kt(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("/kythuat/list");
+        ModelAndView modelAndView = new ModelAndView("kythuat/list");
         modelAndView.addObject("userInfo", getPrincipal());
         modelAndView.addObject("userInfoName", getPrincipalUserName());
 
@@ -133,7 +133,7 @@ public class HomeController {
     @GetMapping("/cskh")
     @PreAuthorize("hasAnyAuthority('CSKH')")
     public ModelAndView cskh(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("/cskh/list");
+        ModelAndView modelAndView = new ModelAndView("cskh/list");
         modelAndView.addObject("userInfo", getPrincipal());
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
@@ -141,37 +141,37 @@ public class HomeController {
 
     @GetMapping("/doing")
     public ModelAndView doing() {
-        ModelAndView modelAndView = new ModelAndView("/employee/doing");
+        ModelAndView modelAndView = new ModelAndView("employee/doing");
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
     }
 
     @GetMapping("/done")
     public ModelAndView done() {
-        ModelAndView modelAndView = new ModelAndView("/employee/done");
+        ModelAndView modelAndView = new ModelAndView("employee/done");
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
     }
 
     @GetMapping("/complete")
     public ModelAndView complete() {
-        ModelAndView modelAndView = new ModelAndView("/employee/complete");
+        ModelAndView modelAndView = new ModelAndView("employee/complete");
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
     }
     @GetMapping("/accessory")
     public ModelAndView accessory() {
-        ModelAndView modelAndView = new ModelAndView("/accessory/list");
+        ModelAndView modelAndView = new ModelAndView("accessory/list");
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
     }
     @GetMapping("/disagree")
     public ModelAndView disagree() {
-        ModelAndView modelAndView = new ModelAndView("/cskh/disagree");
+        ModelAndView modelAndView = new ModelAndView("cskh/disagree");
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
     }
-    @GetMapping("")
+    @GetMapping
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("home/home");
         return modelAndView;
