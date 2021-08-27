@@ -98,9 +98,9 @@ public class HomeController {
     }
 
     @GetMapping("/admin")
-//    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ModelAndView admin(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("/employee/list");
+        ModelAndView modelAndView = new ModelAndView("employee/list");
         modelAndView.addObject("userInfo", getPrincipal());
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
