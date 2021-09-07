@@ -2,6 +2,7 @@ package com.cg.study.service.bill;
 
 import com.cg.study.model.Bill;
 import com.cg.study.model.dto.IBillDTO;
+import com.cg.study.model.dto.IBillStaticDTO;
 import com.cg.study.repository.IBillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,6 +82,11 @@ public class BillService implements IBillService{
     @Override
     public Iterable<Bill> statisticalTechnicians() {
         return billRepository.statisticalTechnicians();
+    }
+
+    @Override
+    public Iterable<IBillStaticDTO> findTotalMonth(int month) {
+        return billRepository.findTotalMonth(month);
     }
 
 

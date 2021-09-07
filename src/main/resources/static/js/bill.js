@@ -245,6 +245,43 @@ bill.completeList = function(){
         }
     })
 }
+bill.salaryList = function(){
+    // let month = $("#month").val();
+    $.ajax({
+        url: page.urls.getAllSalary + month,
+        method:'GET',
+        success: function(response){
+            console.log(response);
+            // $('.table-complete tbody').empty();
+            // $.each(response, function(index, item){
+            //     $('.table-complete tbody').append(`
+            //         <tr>
+            //             <td>${item.id}</td>
+            //             <td>${item.user.fullName}</td>
+            //             <td>${item.product.productName}</td>
+            //             <td>${item.currentAddress}</td>
+            //             <td>${item.kilometer}</td>
+            //             <td>${item.total.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+            //
+            //         </tr>
+            //         `);
+            // });
+            $('.table-complete').DataTable({
+                // columnDefs: [
+                //     { orderable: false, targets: [6,7] },
+                //     { searchable: false, targets: [0,6,7] }
+                // ],
+                // order: [[0, 'desc']]
+            });
+        }
+    })
+}
+
+bill.getMonth= function (){
+    let month = $("#month").val();
+    console.log(month);
+}
+
 bill.statistical = function (){
     bill.staticsList();
     $("#statisticalModal").modal("show");
@@ -269,6 +306,7 @@ bill.staticsList = function(){
 }
 bill.calculalorKilometer = function (id){
     let kilometer = $("#kilometer").val();
+    console.log(kilometer);
     $.ajax({
         url: page.urls.saveNewBills + "/kilometer/" + kilometer + "/" + id,
         type: "PATCH",
@@ -310,6 +348,8 @@ bill.getTechnicians= function () {
         }
     })
 }
+
+
 
 bill.search = function () {
     let serialNumber = $('#search').val();

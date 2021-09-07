@@ -47,6 +47,9 @@
         return (css.match (/\btheme-\S+/g) || []).join(' ');
     });
     if (theme !== 'default') $('body').addClass(theme);
+    setTimeout(function() {
+        $('#my-info').fadeOut('fast');
+    }, 5000);
 </script>
 <nav class="main-menu">
     <ul>
@@ -113,7 +116,7 @@
         <div class="logo">
             <h1><a href="/customers"><img src="/layouts/images/logo.png" alt="" />Colored</a></h1>
         </div>
-        <div class="alert alert-info">
+        <div class="alert alert-info" id="my-info">
             <strong>Hi <span th:text="${userInfoName}"></span></strong> Welcome back!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
         </div>

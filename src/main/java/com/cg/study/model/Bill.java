@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -24,6 +26,7 @@ public class Bill {
     private double kilometer;
     private double total;
     private String status;
+    private LocalDateTime finishDate;
 
     private String currentAddress;
     private String currentPhone;

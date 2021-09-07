@@ -2,6 +2,7 @@ package com.cg.study.service.bill;
 
 import com.cg.study.model.Bill;
 import com.cg.study.model.dto.IBillDTO;
+import com.cg.study.model.dto.IBillStaticDTO;
 import com.cg.study.service.IGeneralService;
 import org.springframework.data.repository.query.Param;
 
@@ -16,4 +17,5 @@ public interface IBillService extends IGeneralService<Bill> {
     public void updateKilometer(@Param("km") double km, @Param("bill_id") Long id);
     public Iterable<Bill> selectAllBillsComplete();
     public Iterable<Bill> statisticalTechnicians();
+    Iterable<IBillStaticDTO> findTotalMonth(int month);
 }

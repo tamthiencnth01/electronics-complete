@@ -3,6 +3,7 @@ package com.cg.study.controller.api;
 import com.cg.study.model.Bill;
 import com.cg.study.model.Customer;
 import com.cg.study.model.dto.IBillDTO;
+import com.cg.study.model.dto.IBillStaticDTO;
 import com.cg.study.service.bill.IBillService;
 import com.cg.study.service.customer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.Clock;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,6 +99,14 @@ public class BillAPI {
         }
         return new ResponseEntity<>(bills, HttpStatus.OK);
     }
+    @GetMapping("/static/{month}")
+    private ResponseEntity<Iterable<IBillStaticDTO>> showHistoryAllBillForTechnician(@PathVariable int month){
+        Iterable<IBillStaticDTO> bills = billService.findTotalMonth(month);
+        if (((List) bills).isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(bills, HttpStatus.OK);
+    }
 
 
     @PostMapping
@@ -137,6 +149,7 @@ public class BillAPI {
         if (!bill.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        bill.get().setFinishDate(LocalDateTime.now());
         billService.updateKilometer(km,id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

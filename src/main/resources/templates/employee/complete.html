@@ -59,6 +59,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         return (css.match (/\btheme-\S+/g) || []).join(' ');
     });
     if (theme !== 'default') $('body').addClass(theme);
+    setTimeout(function() {
+        $('#my-info').fadeOut('fast');
+    }, 5000);
 </script>
 <nav class="main-menu">
     <ul>
@@ -102,6 +105,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                </span>
             </a>
         </li>
+        <li>
+            <a href="/salary">
+                <i class="fa fa-bar-chart nav_icon"></i>
+                <span class="nav-text">
+                LƯƠNG
+               </span>
+            </a>
+        </li>
     </ul>
     <ul class="logout">
         <li>
@@ -136,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
-        <div class="alert alert-info">
+        <div class="alert alert-info" id="my-info">
             <strong>Hi <span th:text="${userInfoName}"></span></strong> Welcome back!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
         </div>

@@ -2,6 +2,7 @@ package com.cg.study.repository;
 
 import com.cg.study.model.Bill;
 import com.cg.study.model.dto.IBillDTO;
+import com.cg.study.model.dto.IBillStaticDTO;
 import com.cg.study.model.dto.IProductDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -46,10 +47,11 @@ public interface IBillRepository extends JpaRepository<Bill, Long> {
     @Query("select b from Bill b where (b.accessory.id is not null or b.product.status = 1) and b.kilometer = 0 ")
     public Iterable<Bill> selectAllBillDoneByTechnician();
 
+
     @Transactional
     @Modifying
-    @Procedure(procedureName = "sp_add_kilometer")
-    public void updateKilometer(@Param("km") double km, @Param("bill_id") Long id);
+    @Query("update Bill b set b.kilometer = :km, b.total = (:km *7000)+300000 where b.id = :id")
+    public void updateKilometer(@Param("km") double km, @Param("id") Long id);
 
     @Transactional
     @Modifying
@@ -65,4 +67,11 @@ public interface IBillRepository extends JpaRepository<Bill, Long> {
 //    @Transactional
 //    @Query(value = "select (select u.full_name from users u where id = user_id) as user, sum(b.total) as total from bills b where month(b.end_date) group by b.user_id;", nativeQuery = true)
 //    public Iterable<IBillDTO> statisticalTechnicians();
+
+    @Query(nativeQuery = true,value = "SELECT month(finish_date) as month, sum(total) as total, u.full_name as userName from bills b\n" +
+            "inner join users u\n" +
+            "on b.user_id = u.id \n" +
+            "where month(finish_date) = ?\n" +
+            "group by user_id;")
+    Iterable<IBillStaticDTO> findTotalMonth(int month);
 }

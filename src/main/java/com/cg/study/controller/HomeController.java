@@ -159,6 +159,12 @@ public class HomeController {
         modelAndView.addObject("userInfoName", getPrincipalUserName());
         return modelAndView;
     }
+    @GetMapping("/salary")
+    public ModelAndView salary() {
+        ModelAndView modelAndView = new ModelAndView("employee/salary");
+        modelAndView.addObject("userInfoName", getPrincipalUserName());
+        return modelAndView;
+    }
     @GetMapping("/accessory")
     public ModelAndView accessory() {
         ModelAndView modelAndView = new ModelAndView("accessory/list");

@@ -46,6 +46,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 screenfull.toggle($('#container')[0]);
             });
         });
+        setTimeout(function() {
+            $('#my-info').fadeOut('fast');
+        }, 5000);
     </script>
     <!-- charts -->
     <script src="/layouts/js/raphael-min.js"></script>
@@ -114,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
             </section>
         </div>
-        <div class="alert alert-info">
+        <div class="alert alert-info" id="my-info">
             <strong>Hi <span th:text="${userInfoName}"></span></strong> Welcome back!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
         </div>
