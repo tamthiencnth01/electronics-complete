@@ -135,7 +135,7 @@ accessory.delete = function(id){
 }
 
 accessory.reset = function () {
-    $('#accessoryForm').validate().resetForm();
+    // $('#accessoryForm').validate().resetForm();
     $('#accessoryForm')[0].reset();
 }
 accessory.init = function () {
