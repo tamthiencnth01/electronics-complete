@@ -189,7 +189,6 @@ bill.doneList = function(){
         url: page.urls.getAllBillsDone,
         method:'GET',
         success: function(response){
-            console.log(response);
             $('.table-done tbody').empty();
             $.each(response, function(index, item){
                 $('.table-done tbody').append(`
@@ -246,26 +245,29 @@ bill.completeList = function(){
     })
 }
 bill.salaryList = function(){
+    let month = App.getMonth();
+    let year = App.getYear();
     // let month = $("#month").val();
     $.ajax({
-        url: page.urls.getAllSalary + month,
+        url: page.urls.getAllSalary + month +"/"+year,
         method:'GET',
         success: function(response){
-            console.log(response);
-            // $('.table-complete tbody').empty();
-            // $.each(response, function(index, item){
-            //     $('.table-complete tbody').append(`
-            //         <tr>
-            //             <td>${item.id}</td>
-            //             <td>${item.user.fullName}</td>
-            //             <td>${item.product.productName}</td>
-            //             <td>${item.currentAddress}</td>
-            //             <td>${item.kilometer}</td>
-            //             <td>${item.total.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
-            //
-            //         </tr>
-            //         `);
-            // });
+            var i = 0;
+            $('.table-salary tbody').empty();
+            $.each(response, function(index, item){
+
+                $('.table-salary tbody').append(`
+                    
+                    <tr>
+                        <td>${i=i+1}</td>
+                        <td>${item.userName}</td>
+                        <td>${item.total.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+                        <td>${item.count}</td>
+                        
+
+                    </tr>
+                    `);
+            });
             $('.table-complete').DataTable({
                 // columnDefs: [
                 //     { orderable: false, targets: [6,7] },
@@ -277,10 +279,6 @@ bill.salaryList = function(){
     })
 }
 
-bill.getMonth= function (){
-    let month = $("#month").val();
-    console.log(month);
-}
 
 bill.statistical = function (){
     bill.staticsList();
@@ -304,6 +302,43 @@ bill.staticsList = function(){
         }
     })
 }
+
+bill.getBillMonth=function (){
+    var date = $("#datepicker").val();
+    var monthYears = date.split("-");
+    var month = monthYears[1];
+    var year = monthYears[0];
+    $.ajax({
+        url: page.urls.getAllSalary + month +"/"+year,
+        method:'GET',
+        success: function(response){
+            var i = 0;
+            $('.table-salary tbody').empty();
+            $.each(response, function(index, item){
+
+                $('.table-salary tbody').append(`
+                    
+                    <tr>
+                        <td>${i=i+1}</td>
+                        <td>${item.userName}</td>
+                        <td>${item.total.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+                        <td>${item.count}</td>
+                        
+
+                    </tr>
+                    `);
+            });
+            $('.table-complete').DataTable({
+                // columnDefs: [
+                //     { orderable: false, targets: [6,7] },
+                //     { searchable: false, targets: [0,6,7] }
+                // ],
+                // order: [[0, 'desc']]
+            });
+        }
+    })
+}
+
 bill.calculalorKilometer = function (id){
     let kilometer = $("#kilometer").val();
     console.log(kilometer);
@@ -342,7 +377,6 @@ bill.getTechnicians= function () {
         success: function(response){
             $('.table-doing').find('.technician').empty();
             $.each(response, (i, item) => {
-                console.log(item.fullName);
                 $('.table-doing').find('.technician').append(`<option value="${item.id}">${item.fullName}</option>`);
             })
         }
@@ -424,6 +458,7 @@ bill.init = function(){
     bill.completeList();
     bill.replacedList();
     bill.getTechnicians();
+    bill.salaryList();
 }
 
 $(document).ready(function(){

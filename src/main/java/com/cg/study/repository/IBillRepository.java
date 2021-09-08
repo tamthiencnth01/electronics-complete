@@ -68,10 +68,11 @@ public interface IBillRepository extends JpaRepository<Bill, Long> {
 //    @Query(value = "select (select u.full_name from users u where id = user_id) as user, sum(b.total) as total from bills b where month(b.end_date) group by b.user_id;", nativeQuery = true)
 //    public Iterable<IBillDTO> statisticalTechnicians();
 
-    @Query(nativeQuery = true,value = "SELECT month(finish_date) as month, sum(total) as total, u.full_name as userName from bills b\n" +
+    @Query(nativeQuery = true,value = "SELECT month(finish_date) as month, sum(total) as total, u.full_name as userName, count(b.id) as count from bills b\n" +
             "inner join users u\n" +
             "on b.user_id = u.id \n" +
-            "where month(finish_date) = ?\n" +
-            "group by user_id;")
-    Iterable<IBillStaticDTO> findTotalMonth(int month);
+            "where month(finish_date) = ?1 and year(finish_date)=?2\n" +
+            "group by user_id\n" +
+            "order by total desc;")
+    Iterable<IBillStaticDTO> findTotalMonth(int month, int year);
 }

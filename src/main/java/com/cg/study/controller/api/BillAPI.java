@@ -99,9 +99,9 @@ public class BillAPI {
         }
         return new ResponseEntity<>(bills, HttpStatus.OK);
     }
-    @GetMapping("/static/{month}")
-    private ResponseEntity<Iterable<IBillStaticDTO>> showHistoryAllBillForTechnician(@PathVariable int month){
-        Iterable<IBillStaticDTO> bills = billService.findTotalMonth(month);
+    @GetMapping("/static/{month}/{year}")
+    private ResponseEntity<Iterable<IBillStaticDTO>> showHistoryAllBillForTechnician(@PathVariable int month,@PathVariable int year){
+        Iterable<IBillStaticDTO> bills = billService.findTotalMonth(month,year);
         if (((List) bills).isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

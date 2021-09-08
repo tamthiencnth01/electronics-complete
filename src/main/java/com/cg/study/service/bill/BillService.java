@@ -85,8 +85,8 @@ public class BillService implements IBillService{
     }
 
     @Override
-    public Iterable<IBillStaticDTO> findTotalMonth(int month) {
-        return billRepository.findTotalMonth(month);
+    public Iterable<IBillStaticDTO> findTotalMonth(int month, int year) {
+        return billRepository.findTotalMonth(month,year);
     }
 
 

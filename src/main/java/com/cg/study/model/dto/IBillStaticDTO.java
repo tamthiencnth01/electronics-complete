@@ -15,4 +15,5 @@ public interface IBillStaticDTO {
     String getUser();
     Long getMonth();
     String getUserName();
+    int getCount();
 }

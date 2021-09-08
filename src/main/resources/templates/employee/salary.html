@@ -19,6 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link rel="stylesheet" href="/layouts/css/font.css" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="/layouts/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <script src="/layouts/js/jquery2.0.3.min.js"></script>
     <script src="/layouts/js/modernizr.js"></script>
@@ -52,6 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--    Data table-->
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 
 </head>
 <body class="dashboard-page">
@@ -65,6 +67,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     setTimeout(function() {
         $('#my-info').fadeOut('fast');
     }, 5000);
+    $("#datepicker").datepicker( {
+        format: "mm-yyyy",
+        startView: "months",
+        minViewMode: "months"
+    });
 </script>
 <nav class="main-menu">
     <ul>
@@ -165,26 +172,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="agile-tables">
                 <div class="w3l-table-info">
                     <div class="float-left">
-                        <h3>Danh Sách Nhân Viên</h3>
+                        <h3>Lựa Chọn Tháng: </h3>
                     </div>
-                    <div class="float-right">
-                        <a href="javascript:;" onclick="user.showModal()" class="btn btn-primary">
-                            <i class="fa fa-plus"></i>
-                            Create
-                        </a>
+                    <div>
+                        <input type="month" id="datepicker" name="datepicker" value="" oninput="bill.getBillMonth()"/>
+
                     </div>
-                    <form>
-                        <input type="month" id="month"/>
-                        <button type="submit" onclick="bill.getMonth()"></button>
-                    </form>
+
 
                     <table id="table" class="table-salary">
                         <thead>
                         <tr>
-                            <th>#</th>
+                            <th>STT</th>
                             <th>Tên Nhân Viên</th>
                             <th>Số tiền trong tháng</th>
-                            <th>Chức Vụ</th>
+                            <th>Số ca thực hiện trong tháng</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -252,6 +254,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
+
 <script src="/js/bill.js"></script>
 <!-- jQuery -->
 <script src="/plugins/jquery/jquery.min.js"></script>
