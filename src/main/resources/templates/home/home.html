@@ -1,63 +1,178 @@
 <!DOCTYPE html>
-<html lang="vi" dir="ltr" data-countrycode="vn">
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Trung Tâm Hỗ Trợ Khách Hàng | LG Viet nam</title>
-    <meta name="keywords" content="NODATA" />
-    <meta name="description" content="NODATA" />
-    <meta name="robots" content="INDEX, FOLLOW" />
-
-    <link rel="canonical" href="https://www.lg.com/vn/tro-giup" />
-
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Bảo hành điện tử tích hợp tin nhắn SMS kích hoạt bảo hành nhanh thay thế bảo hành bằng giấy">
+    <meta name="author" content="baohanhdientu.net">
+    <title>Kiểm tra thời hạn bảo hành điện tử</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/home/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/home/css/modern-business.css" rel="stylesheet">
+    <link rel="stylesheet" href="/home/css/font-awesome/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/home//favicon.ico">
+    <meta name="google-site-verification" content="c4ro9-jprK7TgfbXTE-TPBQRZsdpOSBkOt0hQGQjYOU" />
 </head>
-<body>
-<div class="container mt-4">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-9">
-            <div class="card p-4 mt-3">
-                <h3 class="heading mt-5 text-center">Hi! How can we help You?</h3>
-                <div class="d-flex justify-content-center px-5">
-                    <div class="search"> <input type="text" class="search-input" placeholder="Search..." name=""> <a href="#" class="search-icon"> <i class="fa fa-search"></i> </a> </div>
-                </div>
-                <div class="row mt-4 g-1 px-4 mb-5">
-                    <div class="col-md-2">
-                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/Mb8kaPV.png" width="50">
-                            <div class="text-center mg-text"> <span class="mg-text">Account</span> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/ueLEPGq.png" width="50">
-                            <div class="text-center mg-text"> <span class="mg-text">Payments</span> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/tmqv0Eq.png" width="50">
-                            <div class="text-center mg-text"> <span class="mg-text">Delivery</span> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/D0Sm15i.png" width="50">
-                            <div class="text-center mg-text"> <span class="mg-text">Product</span> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/Z7BJ8Po.png" width="50">
-                            <div class="text-center mg-text"> <span class="mg-text">Return</span> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/YLsQrn3.png" width="50">
-                            <div class="text-center mg-text"> <span class="mg-text">Guarantee</span> </div>
+<body ng-app="AppCheckWara">
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '/analytics.js', 'ga');
+
+    ga('create', 'UA-104130536-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+<!-- Navigation -->
+<nav class="navbar   navbar-expand-lg navbar-light bg-white navar_topMenu  ">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img alt="Bảo hành điện tử" src="/home/content/images/logo-lg.png"  style="height: 120px; width: 200px"/>
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fa fa-check-square-o" aria-hidden="true"></i> Kiểm tra bảo hành</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="/HTML/Active.html"><i class="fa fa-qrcode" aria-hidden="true"></i> Kích hoạt bảo hành</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h4 class="card-title my-4">
+        KIỂM TRA BẢO HÀNH
+    </h4>
+    <p class="card-text">
+        Vui lòng điền mã sản phẩm để tra cứu thông tin thời hạn bảo hành:
+    </p>
+    <!-- Features Section -->
+    <div class="row margin_top_100 margin_bottom_100" ng-controller="KiemTra">
+        <!-- <div class="se-pre-con overlay" ng-show="isViewLoading"></div> -->
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <input ng-model="S_Serial" class="form-control" maxlength="80" placeholder="Nhập mã sản phẩm" type="text" value="">
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button ng-click="TraCuu()" class="btn btn-info"><i class="fa fa-check-square-o"></i> Tra cứu</button>
+                </div>
+            </div>
+            <br />
         </div>
     </div>
 </div>
+<footer class="py-5 bg-dark bg_blue footer ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6  ">
+                <div class="h-100  ">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12  ">
+                                <h5 class="mt-0">Liên hệ</h5>
+                                <ul class="ul_no_style">
+                                    <li>
+                                        <i class="fa fa-home" aria-hidden="true"></i> <b>Trung tâm bảo hành tivi LG.</b>
+                                    </li>
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i> Tel: 0938.563.896</li>
+                                    <li><i class="fa fa-envelope" aria-hidden="true"></i> Email: hethongbaohanh@gmail.com</li>
+                                    <li><i class="fa fa-internet-explorer" aria-hidden="true"></i> Website: <a target="_blank" style="color:#fff" alt="bao hanh dien tu" href="https://baohanhdientu.net">www.baohanhdientu.net</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6  ">
+                <div class="h-100">
+                    <div class="">
+                        <h5 class="mt-0">Thông tin hỗ trợ</h5>
+                        <ul class="ul_no_style">
+                            <li>
+                                <i class="fa fa-gg" aria-hidden="true"></i> Dịch vụ ngoài bảo hành
+                                <br />
+                                <i class="fa fa-gg" aria-hidden="true"></i> Đăng ký thành viên
+                                <br />
+                                <i class="fa fa-gg" aria-hidden="true"></i> Các chính sách khác
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6  "></div>
+        </div>
+    </div>
+    <!-- /.container -->
+</footer>
+<!-- Bootstrap core JavaScript -->
+<script src="/home/css/vendor/jquery/jquery.min.js"></script>
+<script src="/home/css/vendor/popper/popper.min.js"></script>
+<script src="/home/css/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/home/js/SPA/Lib/datetimepicker/bootstrap-datepicker.css" rel="stylesheet" />
+<script src="/home/js/SPA/Lib/datetimepicker/bootstrap-datepicker.js"></script>
+
+<script src="/home/js/SPA/Lib/datetimepicker/bootstrap-datepicker.vi.min.js"></script>
+
+
+<script src="/home/js/SPA/Lib/angular.min.js"></script>
+<script src="/home/js/SPA/Lib/angular-sanitize.js"></script>
+<script src="/home/js/SPA/Lib/angular-animate.min.js"></script>
+<script src="/home/js/SPA/Lib/paging.js"></script>
+
+<script src="/home/js/SPA/Lib/bootbox.js"></script>
+<script src="/home/js/SPA/Lib/ngBootbox.js"></script>
+
+<script src="/home/js/SPA/AppCheck/AppCheckWara.js"></script>
+<script src="/home/js/SPA/AppCheck/KiemTra.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#datetimepicker1').datepicker();
+    });
+
+    //<!-- scripts datepicker -->
+    $('.datepicker').datepicker({
+        format: "dd-mm-yyyy",
+        todayBtn: "linked",
+        clearBtn: false,
+        autoclose: true,
+        language: "vi",
+        calendarWeeks: false,
+        todayHighlight: true
+    });
+
+    //<!-- scripts datepicker daterange-->
+    $('#daterange-container .input-daterange').datepicker({
+        format: "dd-mm-yyyy",
+        todayBtn: "linked",
+        clearBtn: false,
+        language: "vi",
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
 </body>
 </html>

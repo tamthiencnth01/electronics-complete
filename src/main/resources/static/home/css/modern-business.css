@@ -1,0 +1,208 @@
+/*!
+ * Start Bootstrap - Modern Business (http://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+ body {
+    /*padding-top: 54px;*/
+    font-size:15px
+}
+
+/*@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}*/
+
+
+@media (min-width: 1200px)
+{
+    .container {
+        max-width: 970px;
+    }
+ 
+}
+ 
+
+
+.carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+
+
+.bg_blue{
+    background:#0F346C !important
+}
+
+.navar_topMenu{
+    border-bottom: 1px solid #e7e7e7;
+}
+.card_noborder{
+    border:none
+}
+
+.margin_top_100{
+    margin-top:50px
+}
+
+
+.margin_bottom_100{
+    margin-bottom:50px
+}
+
+.margin_top_bot_30{
+    margin-bottom:30px;
+    margin-top:30px
+}
+
+
+.card-footer{
+    color:white;
+    background:none
+      
+}
+
+.ul_style a.white{
+    color:white
+}
+
+footer.py-5.bg-dark.bg_blue {
+    color: white;
+}
+
+.ul_no_style {
+    padding: 5px;
+    list-style: none;
+}
+
+
+.coppy_right_text {
+    border-top: 1px solid white;
+    padding-top: 15px;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+   .margin_top_100{
+    margin-top:30px
+}
+
+
+.margin_bottom_100{
+    margin-bottom:30px
+}
+}
+
+b.title_with_100 {
+    min-width: 162px;
+    display: block;
+    float: left;
+    /* text-align: right; */
+}
+
+._str_error{
+    color:red;
+}
+
+
+.footer ul.ul_style li {
+    margin-bottom: 20px;
+}
+
+.footer .ul_no_style li {
+    margin-bottom: 8px;
+}
+
+
+
+.overlay {
+   
+    height: 100%;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+     
+     
+}
+
+
+.se-pre-con {
+    background: white url("../images/web/loading.gif") no-repeat scroll center center;
+    height: 100%;
+    left: 0;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999999;
+}
+
+/*.fogot_pass_link{
+     
+    border-bottom: 1px solid #ccc;
+    display: block;
+    padding: 10px 0px 5px 0px;
+ }*/
+.faico {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.faico li {
+    display: inline-block;
+    margin: 8px 5px 0 0;
+    padding: 0;
+    line-height: normal;
+}
+
+.faico a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+.faico a {
+    color: #FFFFFF;
+    background-color: #646464;
+}
+
+.note_connect{
+        padding: 10px 0px;
+    font-size: 12px;
+    padding-bottom: 0px;
+   margin-bottom:5px;
+}
+
+
+
+ 
+.fotter_light{
+
+    border-top: 1px solid #e7e7e7;
+}
+
+.text_ccc_copyright {
+    color: #959595;
+    font-size: 13px;
+}
