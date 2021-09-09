@@ -124,7 +124,7 @@ product.resetSearchInput = function(){
 }
 
 product.reset = function(){
-    // $('#productForm').validate().resetForm();
+    $('#productForm').validate().resetForm();
     $('#productForm')[0].reset();
 }
 

@@ -49,7 +49,7 @@ customer.customerList = function(){
 }
 
 customer.showModal = function(){
-    // $('#customerForm').validate().resetForm();
+    $('#customerForm').validate().resetForm();
     $('#customerForm')[0].reset();
     $('#customerModal').modal('show');
 }
@@ -72,7 +72,7 @@ customer.save = function(){
                 success: function(result){
                     if(result){
                         customer.customerList();
-                        // $('#customerForm').validate().resetForm();
+                        $('#customerForm').validate().resetForm();
                         $('#customerForm')[0].reset();
                         $('#customerModal').modal('hide');
                         $.notify("Customer has been created success", "success");
@@ -99,7 +99,7 @@ customer.save = function(){
                 success: function(result){
                     if(result){
                         customer.customerList();
-                        // $('#customerForm').validate().resetForm();
+                        $('#customerForm').validate().resetForm();
                         $('#customerForm')[0].reset();
                         $('#customerModal').modal('hide');
                         $.notify("Customer has been updated success", "success");
@@ -173,7 +173,7 @@ customer.removeCustomer = function(id){
 }
 
 customer.reset = function(){
-    // $('#customerForm').validate().resetForm();
+    $('#customerForm').validate().resetForm();
     $('#customerForm')[0].reset();
     $('#customerModal').find('.modal-title').text('Add customer');
 }

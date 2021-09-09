@@ -81,7 +81,7 @@ user.getRoles= function () {
 }
 
 user.reset = function(){
-    // $('#productForm').validate().resetForm();
+    $('#productForm').validate().resetForm();
     $('#productForm')[0].reset();
 }
 user.init = function(){
