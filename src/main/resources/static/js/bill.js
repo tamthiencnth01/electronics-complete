@@ -462,7 +462,15 @@ bill.replacedList = function (){
                            </tr>
                         `);
             });
+            $('.table-replaced').DataTable({
+                // columnDefs: [
+                //     { orderable: false, targets: [6,7] },
+                //     { searchable: false, targets: [0,6,7] }
+                // ],
+                // order: [[0, 'desc']]
+            });
         }
+
     })
 }
 
