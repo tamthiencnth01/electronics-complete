@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Bảo hành điện tử tích hợp tin nhắn SMS kích hoạt bảo hành nhanh thay thế bảo hành bằng giấy">
     <meta name="author" content="baohanhdientu.net">
+
     <title>Kiểm tra thời hạn bảo hành điện tử</title>
-    <link REL="SHORTCUT ICON"  HREF="/home/favicon.ico">
     <!-- Bootstrap core CSS -->
     <link href="/home/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/home/css/modern-business.css" rel="stylesheet">
     <link rel="stylesheet" href="/home/css/font-awesome/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="/home//favicon.ico">
+    <link rel="shortcut icon" href="/home/favicon.ico">
     <meta name="google-site-verification" content="c4ro9-jprK7TgfbXTE-TPBQRZsdpOSBkOt0hQGQjYOU" />
+
+    <link rel="stylesheet" href="/css/sweetalert2.min.css">
+    <!--    <script src="/js/jquery-3.6.0.min.js"></script>-->
+    <script src="/home/css/vendor/jquery/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body ng-app="AppCheckWara">
 <script>
@@ -32,7 +39,7 @@
 <nav class="navbar   navbar-expand-lg navbar-light bg-white navar_topMenu  ">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img alt="Bảo hành điện tử" src="/home/content/images/logo-lg.png"  style="height: 120px; width: 200px"/>
+            <img alt="Bảo hành điện tử" src="/home/content/images/logo-lg.png" />
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,20 +69,21 @@
     </p>
     <!-- Features Section -->
     <div class="row margin_top_100 margin_bottom_100" ng-controller="KiemTra">
+
         <!-- <div class="se-pre-con overlay" ng-show="isViewLoading"></div> -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="reset-search-keyword">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <input ng-model="S_Serial" class="form-control" maxlength="80" placeholder="Nhập mã sản phẩm" type="text" value="">
+                            <input ng-model="S_Serial" id="search-keyword" class="form-control" maxlength="80" placeholder="Nhập mã sản phẩm" type="text" value="">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button ng-click="TraCuu()" class="btn btn-info"><i class="fa fa-check-square-o"></i> Tra cứu</button>
+                    <button onclick="product.search()" class="btn btn-info"><i class="fa fa-check-square-o"></i> Tra cứu</button>
                 </div>
             </div>
             <br />
@@ -127,7 +135,15 @@
     <!-- /.container -->
 </footer>
 <!-- Bootstrap core JavaScript -->
-<script src="/home/css/vendor/jquery/jquery.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/page.js"></script>
+
+<script src="/js/product.js"></script>
+<script src="/js/bill.js"></script>
+
+<script type="text/javascript" src="/js/sweetalert2.min.js"></script>
+
+
 <script src="/home/css/vendor/popper/popper.min.js"></script>
 <script src="/home/css/vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -147,6 +163,7 @@
 
 <script src="/home/js/SPA/AppCheck/AppCheckWara.js"></script>
 <script src="/home/js/SPA/AppCheck/KiemTra.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
 
@@ -175,5 +192,130 @@
         todayHighlight: true
     });
 </script>
+<!--     The Modal View Product-->
+<div class="modal" id="viewSearchProductModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thời Lượng Bảo Hành Của Sản Phẩm</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="viewSearchProductForm">
+                    <div class="form-group" style="text-align: center">
+                        <p>Tên Khách Hàng: <span style="color: #0e8f9f" id="customerFullName"></span></p>
+                    </div>
+                    <table id="table-search-product" class="table table-hover table-bordered text-nowrap table-search-product table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Mã Số</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Dòng</th>
+                            <th>Ngày Bắt Đầu</th>
+                            <th>Thời Hạn</th>
+                            <th>Mô Tả</th>
+                            <th>Báo Ca</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--     The Modal View Product-->
+<div class="modal" id="viewSearchModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thời Lượng Bảo Hành Của Sản Phẩm</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="viewSearchForm">
+                    <div class="form-group" style="text-align: center">
+                        <p>Tên Khách Hàng: <span style="color: #0e8f9f" id="customer-full-name"></span></p>
+                    </div>
+                    <table id="table-search" class="table table-hover table-bordered text-nowrap table-search table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Mã Số</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Dòng</th>
+                            <th>Ngày Bắt Đầu</th>
+                            <th>Thời Hạn</th>
+                            <th>Mô Tả</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal Create Bill -->
+<div class="modal" id="billModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Phiếu Thông Tin Bảo Hành </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="createBillForm">
+                    <div class="form-group" style="text-align: center">
+                        <p>Tên Khách Hàng: <span style="color: #0e8f9f" id="customer_Full_Name"></span></p>
+                        <p>Tên Sản Phẩm: <span style="color: red" id="productName"></span></p>
+                        <p>Số SerialNumber: <span style="color: red" id="productSerial"></span></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ hiện tại:</label>
+                        <input type="text" name="billAddress" class="form-control">
+                        <input type="hidden" name="billId" value="0">
+                        <input type="hidden" id="customerId">
+                        <input type="hidden" id="productId">
+                    </div>
+                    <div class="form-group">
+                        <label>Số Điện Thoại</label>
+                        <input type="tel" name="billPhoneNumber" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tình Trạng Ban Đầu</label>
+                        <input type="text" name="firstStatus" class="form-control">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="bill.save()">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>

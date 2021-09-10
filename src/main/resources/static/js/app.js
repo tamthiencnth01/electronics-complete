@@ -28,6 +28,7 @@ class App {
     static BASE_URL_BILL_STATICS = url +"/api/bills/statistical";
     static BASE_URL_ACCESSORY = url +"/api/accessories";
     static BASE_URL_REPLACED = url +"/api/replaceds";
+    static BASE_URL_PRODUCT_CSKH = url + "/api/products/cskh";
 
 
     static showDeleteConfirmDialog() {

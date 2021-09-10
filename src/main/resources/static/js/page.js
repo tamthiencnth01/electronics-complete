@@ -27,6 +27,7 @@ let page = {
         updateDoingBill: App.BASE_URL_BILL + '/',
         searchProductBySerialNumber: App.BASE_URL_PRODUCT + '?search=',
         saveNewReplaced: App.BASE_URL_REPLACED + "/",
-        getAllReplaced: App.BASE_URL_REPLACED
+        getAllReplaced: App.BASE_URL_REPLACED,
+        getRemainingDay: App.BASE_URL_PRODUCT_CSKH + '?search='
     }
 }

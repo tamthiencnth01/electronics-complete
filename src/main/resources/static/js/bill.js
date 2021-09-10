@@ -339,6 +339,21 @@ bill.getBillMonth=function (){
     })
 }
 
+bill.getProductHome = function (id) {
+    bill.reset();
+    $.ajax({
+        url: page.urls.getProduct + id,
+        method: "GET",
+        success: function (response) {
+            $('#customerId').val(response.customer.id);
+            $('#productId').val(response.id);
+            $('#customer_Full_Name').text(response.customer.customerFullName);
+            $('#productName').text(response.productName);
+            $('#productSerial').text(response.serialNumber);
+            $('#billModal').modal('show');
+        }
+    })
+}
 bill.calculalorKilometer = function (id){
     let kilometer = $("#kilometer").val();
     console.log(kilometer);

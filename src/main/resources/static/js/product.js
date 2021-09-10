@@ -91,19 +91,58 @@ product.search = function () {
                 if (data.length === 0) {
                     App.showSuccessAlert("Không Tìm Thấy Sản Phẩm!");
                 } else {
-                    let content = "";
-                    for (let i = 0; i < data.length; i++) {
-                        $('#customerFullName').text(data[i].customer.customerFullName);
-                        content += `<tr>
+                    if (data[0].status === 0) {
+                        let content = "";
+                        $.ajax({
+                            url: page.urls.getRemainingDay + serialNumber,
+                            method: 'GET',
+                            success: function (dataCSKH) {
+                                console.log(dataCSKH[0].remainingDay);
+                                for (let i = 0; i < data.length; i++) {
+                                    $('#customerFullName').text(data[i].customer.customerFullName);
+                                    content += `<tr>
                                 <td id="serialNumber">${data[i].serialNumber}</td>
                                 <td>${data[i].productName}</td>
                                 <td>${data[i].serviceTag}</td>
                                 <td>${data[i].purchaseDay}</td>
+                                <td>${dataCSKH[0].remainingDay}</td>
                                 <td>${data[i].productDescription}</td>
+                                <td><a href='javascript:;' class='btn btn-success btn-sm'
+                                        title='Add Bill'
+                                        onclick="bill.getProductHome(${data[0].id})">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </td>
                             </tr>`
+                                }
+                                $('#table-search-product tbody').html(content); // show dữ liệu khi trả về
+                                console.log(data[0].status);
+                                $('#viewSearchProductModal').modal('show');
+                            }
+                        })
+                    } else {
+                        let content = "";
+                        $.ajax({
+                            url: page.urls.getRemainingDay + serialNumber,
+                            method: 'GET',
+                            success: function (dataCSKH) {
+                                for (let i = 0; i < data.length; i++) {
+                                    $('#customer-full-name').text(data[i].customer.customerFullName);
+                                    content += `<tr>
+                                        <td id="serialNumber">${data[i].serialNumber}</td>
+                                        <td>${data[i].productName}</td>
+                                        <td>${data[i].serviceTag}</td>
+                                        <td>${data[i].purchaseDay}</td>
+                                        <td>${dataCSKH[0].remainingDay}</td>
+                                        <td>${data[i].productDescription}</td>
+                                    </tr>`
+                                }
+                                $('#table-search tbody').html(content); // show dữ liệu khi trả về
+                                console.log(data[0].status);
+                                $('#viewSearchModal').modal('show');
+                            }
+                        })
                     }
-                    $('#table-search-product tbody').html(content); // show dữ liệu khi trả về
-                    $('#viewSearchProductModal').modal('show');
                 }
             }
         });
